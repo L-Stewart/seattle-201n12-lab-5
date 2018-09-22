@@ -54,15 +54,20 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
-  var summed = a + b + c;
-  var concatenated = a + ' and ' + b + ' and '+ c + ' sum to ' + summed + '.';
-  
+  var sumMult = [];
+  var sumFirst = sum(a, b)[0];
+  sumFirst = sum(sumFirst, c)[0];
+  // console.log(sumFirst);
 
-  var times = a * b * c;
-  var concatenate = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + times + '.';
-  var returnArraySumProduct = [summed, times, concatenated, concatenate];
-  console.log(returnArraySumProduct);
-  return returnArraySumProduct;
+  var multFirst = multiply(a, b)[0];
+  multFirst = multiply(multFirst, c)[0];
+  // console.log(multFirst);
+
+  var sumString = a + ' and ' + b + ' and ' + c + ' sum to ' + sumFirst + '.';
+  var multString = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + multFirst + '.';
+  
+  sumMult.push(sumFirst, multFirst, sumString, multString);
+  return sumMult;
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
