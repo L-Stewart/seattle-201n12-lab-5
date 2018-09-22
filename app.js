@@ -54,15 +54,20 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
-  var summed = a + b + c;
-  var concatenated = a + ' and ' + b + ' and '+ c + ' sum to ' + summed + '.';
-  
+  var sumMult = [];
+  var sumFirst = sum(a, b)[0];
+  sumFirst = sum(sumFirst, c)[0];
+  // console.log(sumFirst);
 
-  var times = a * b * c;
-  var concatenate = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + times + '.';
-  var returnArraySumProduct = [summed, times, concatenated, concatenate];
-  console.log(returnArraySumProduct);
-  return returnArraySumProduct;
+  var multFirst = multiply(a, b)[0];
+  multFirst = multiply(multFirst, c)[0];
+  // console.log(multFirst);
+
+  var sumString = a + ' and ' + b + ' and ' + c + ' sum to ' + sumFirst + '.';
+  var multString = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + multFirst + '.';
+  
+  sumMult.push(sumFirst, multFirst, sumString, multString);
+  return sumMult;
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
@@ -83,13 +88,22 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 var testArray = [2, 3, 4]; //eslint-disable-line
 
-function sumArray(sumArr) { //eslint-disable-line
+function sumArray(testArray) { //eslint-disable-line
+  var arrayAnswer = []
+  var sumArr = sum(testArray[0], testArray[1])[0];
+  sumArr = sum(sumArr, testArray[2]);
+  //console.log(sumArr[0]);
 
+  var arrayString = testArray[0] + ',' + testArray[1] + ',' + testArray[2] + ' was passed in as an array of numbers, and ' + sumArr[0] + ' is their sum.';
+  // console.log(sumNumbers[0]);
+  // console.log(sumArrayString);
+  arrayAnswer.push(sumArr[0], arrayString);
+  return arrayAnswer;
 }
 
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
